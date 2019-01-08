@@ -23,12 +23,58 @@
 }
 
 .img-circular {
-  width: 200px;
-  height: 200px;
-  background-image: url('pinoy.jpg');
-  background-size: cover;
-  border-radius: 50%;
-  display: inline-block;
+   width: 200px;
+   height: 200px;
+   background-image: url('pinoy.jpg');
+   background-size: cover;
+   border-radius: 50%;
+   display: inline-block;
+   position: relative;
+   border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+ }
+.img-circular:hover {
+  width: 210px;
+  height: 210px;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out 0s;
+}
+.img-circular .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.img-circular .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.img-circular:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 .img-circular2 {
   width: 200px;
@@ -37,6 +83,52 @@
   background-size: cover;
   border-radius: 50%;
   display: inline-block;
+  position: relative;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+.img-circular2:hover {
+  width: 210px;
+  height: 210px;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out 0s;
+}
+.img-circular2 .tooltiptext2 {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.img-circular2 .tooltiptext2::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.img-circular2:hover .tooltiptext2 {
+  visibility: visible;
+  opacity: 1;
 }
 .img-circular3 {
   width: 200px;
@@ -45,6 +137,52 @@
   background-size: cover;
   border-radius: 50%;
   display: inline-block;
+  position: relative;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+.img-circular3:hover {
+  width: 210px;
+  height: 210px;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out 0s;
+}
+.img-circular3 .tooltiptext3 {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.img-circular3 .tooltiptext3::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.img-circular3:hover .tooltiptext3 {
+  visibility: visible;
+  opacity: 1;
 }
 
 @keyframes App-logo-spin {

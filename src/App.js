@@ -31,6 +31,7 @@ class App extends Component {
       button1: 'BRUNO',
       button2: 'MOZAT',
       pic: 'pinoy4',
+      title: 'default'
     };
   }
   
@@ -38,26 +39,29 @@ class App extends Component {
     this.setState({
       hidden: false
     });
-  if(abc === 'BEDHOVEN'){
-    this.setState({
-      pic: 'pinoy'
-    })
-  }
-  else if(abc === 'BRUNO'){
-    this.setState({
-      pic: 'pinoy2'
-    })
-  }
-  else if(abc === 'MOZAT'){
-    this.setState({
-      pic: 'pinoy3'
-    })
-  }
-  else{
-    this.setState({
-      pic: 'pinoy4'
-    })
-  }
+    if(abc === 'BEDHOVEN'){
+      this.setState({
+        pic: 'pinoy',
+        title: 'QUEEN'
+      })
+    }
+    else if(abc === 'BRUNO'){
+      this.setState({
+        pic: 'pinoy2',
+        title: 'KING'
+      })
+    }
+    else if(abc === 'MOZAT'){
+      this.setState({
+        pic: 'pinoy3',
+        title: 'PRINCE'
+      })
+    }
+    else{
+      this.setState({
+        pic: 'pinoy4'
+      })
+    }
   }
   
   render() {
@@ -65,7 +69,7 @@ class App extends Component {
       {
         url: require('./through_the_night.mp3'),
         cover: require(`./${this.state.pic}.jpg`),
-        title: 'Through The Night',
+        title: `${this.state.title}`,
         artist: [
           'IU',
           'Lee Ji Eun'
@@ -76,9 +80,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div>
-            <div onClick={() => this.check(this.state.button)} className="img-circular" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div onClick={() => this.check(this.state.button1)} className="img-circular2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div onClick={() => this.check(this.state.button2)} className="img-circular3" />
+            <div onClick={() => this.check(this.state.button)} className="img-circular"><span className="tooltiptext">Queen</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div onClick={() => this.check(this.state.button1)} className="img-circular2"><span className="tooltiptext2">King</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div onClick={() => this.check(this.state.button2)} className="img-circular3"><span className="tooltiptext3">Prince</span></div>
             <div hidden={this.state.hidden}>
               <MusicPlayer playlist={playlist} />
             </div>
