@@ -22,6 +22,31 @@
   color: #61dafb;
 }
 
+.img-circular {
+  width: 200px;
+  height: 200px;
+  background-image: url('pinoy.jpg');
+  background-size: cover;
+  border-radius: 50%;
+  display: inline-block;
+}
+.img-circular2 {
+  width: 200px;
+  height: 200px;
+  background-image: url('pinoy2.jpg');
+  background-size: cover;
+  border-radius: 50%;
+  display: inline-block;
+}
+.img-circular3 {
+  width: 200px;
+  height: 200px;
+  background-image: url('pinoy3.jpg');
+  background-size: cover;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

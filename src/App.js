@@ -26,23 +26,36 @@ class App extends Component {
           label: 'def',
         },
       ],
-      loadingGlobal: 1,
+      hidden: true,
       button: 'BEDHOVEN',
       button1: 'BRUNO',
       button2: 'MOZAT',
-      pic: 'pinoy',
+      pic: 'pinoy4',
     };
   }
   
   check(abc) {
+    this.setState({
+      hidden: false
+    });
   if(abc === 'BEDHOVEN'){
     this.setState({
       pic: 'pinoy'
     })
   }
-  else{
+  else if(abc === 'BRUNO'){
     this.setState({
       pic: 'pinoy2'
+    })
+  }
+  else if(abc === 'MOZAT'){
+    this.setState({
+      pic: 'pinoy3'
+    })
+  }
+  else{
+    this.setState({
+      pic: 'pinoy4'
     })
   }
   }
@@ -63,18 +76,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div>
-            <div>
-              <Button type="primary" onClick={() => this.check(this.state.button)}>GENERATE BEDHOVEN</Button>
+            <div onClick={() => this.check(this.state.button)} className="img-circular" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div onClick={() => this.check(this.state.button1)} className="img-circular2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div onClick={() => this.check(this.state.button2)} className="img-circular3" />
+            <div hidden={this.state.hidden}>
+              <MusicPlayer playlist={playlist} />
             </div>
-            <br/>
-            <div>
-              <Button type="primary" onClick={() => this.check(this.state.button1)}>GENERATE BRUNO</Button>
-            </div>
-            <br/>
-            <div>
-              <Button type="primary" onClick={() => this.check(this.state.button2)}>GENERATE MOZAT</Button>
-            </div>
-            <MusicPlayer playlist={playlist} />
           </div>
         </header>
       </div>
