@@ -25,7 +25,7 @@
 .img-circular {
    width: 200px;
    height: 200px;
-   background-image: url('pinoy.jpg');
+   background-image: url('beethoven.jpg');
    background-size: cover;
    border-radius: 50%;
    display: inline-block;
@@ -79,7 +79,7 @@
 .img-circular2 {
   width: 200px;
   height: 200px;
-  background-image: url('pinoy2.jpg');
+  background-image: url('chopin.jpg');
   background-size: cover;
   border-radius: 50%;
   display: inline-block;
@@ -133,7 +133,7 @@
 .img-circular3 {
   width: 200px;
   height: 200px;
-  background-image: url('pinoy3.jpg');
+  background-image: url('mozart.jpg');
   background-size: cover;
   border-radius: 50%;
   display: inline-block;
@@ -183,6 +183,45 @@
 .img-circular3:hover .tooltiptext3 {
   visibility: visible;
   opacity: 1;
+}
+
+h1 {
+  display: inline;
+  position: relative;
+  font: 200px Helvetica, Sans-Serif;
+  letter-spacing: -5px;
+  color: rgba(0,0,255,0.5);
+
+}
+
+h1:after {
+  content: "Neural_Rhapsody";
+  position: absolute; left: 3px; top: 2px;
+  color: rgba(255,0,0,0.5);
+}
+
+.typewriter h1 {
+  font-family: monospace; /* Web-safe typewriter-like font */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+          typing 3.5s steps(30, end),
+          blinking-cursor .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blinking-cursor {
+  from, to { border-color: transparent }
+  50% { border-color: #ff7559; }
 }
 
 @keyframes App-logo-spin {

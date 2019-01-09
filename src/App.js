@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import MusicPlayer from 'react-responsive-music-player'
-import Button from 'react-button-component';
-
-const CustomizedButton = Button.extend`
-  color: #FFF;
-  border: none;
-  border-radius: 5px;
-  background: linear-gradient(70deg, #FF5686, #FF7B9E);
-  border-bottom: 5px solid #C44267;
-`
 
 class App extends Component {
   constructor(props) {
@@ -27,34 +18,38 @@ class App extends Component {
         },
       ],
       hidden: true,
-      button: 'BEDHOVEN',
-      button1: 'BRUNO',
-      button2: 'MOZAT',
+      button: 'beethoven',
+      button1: 'chopin',
+      button2: 'mozart',
       pic: 'pinoy4',
       title: 'default'
     };
   }
   
   check(abc) {
+    fetch('https://192.168.43.112:5000/generate/test')
+      .then(response => console.log(response))
+      .then(data => this.setState({ data }));
+    
     this.setState({
       hidden: false
     });
-    if(abc === 'BEDHOVEN'){
+    if(abc === 'beethoven'){
       this.setState({
-        pic: 'pinoy',
-        title: 'QUEEN'
+        pic: 'beethoven',
+        title: 'Beethoven'
       })
     }
-    else if(abc === 'BRUNO'){
+    else if(abc === 'chopin'){
       this.setState({
-        pic: 'pinoy2',
-        title: 'KING'
+        pic: 'chopin',
+        title: 'Chopin'
       })
     }
-    else if(abc === 'MOZAT'){
+    else if(abc === 'mozart'){
       this.setState({
-        pic: 'pinoy3',
-        title: 'PRINCE'
+        pic: 'mozart',
+        title: 'Mozart'
       })
     }
     else{
@@ -71,8 +66,7 @@ class App extends Component {
         cover: require(`./${this.state.pic}.jpg`),
         title: `${this.state.title}`,
         artist: [
-          'IU',
-          'Lee Ji Eun'
+          'Neural Raphsody',
         ]
       }
     ];
@@ -80,9 +74,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div>
-            <div onClick={() => this.check(this.state.button)} className="img-circular"><span className="tooltiptext">Queen</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div onClick={() => this.check(this.state.button1)} className="img-circular2"><span className="tooltiptext2">King</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div onClick={() => this.check(this.state.button2)} className="img-circular3"><span className="tooltiptext3">Prince</span></div>
+            <div className="typewriter">
+              <h1 className="h1">Neural_Rhapsody</h1>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div onClick={() => this.check(this.state.button)} className="img-circular"><span className="tooltiptext">Beethoven</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div onClick={() => this.check(this.state.button1)} className="img-circular2"><span className="tooltiptext2">Chopin</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div onClick={() => this.check(this.state.button2)} className="img-circular3"><span className="tooltiptext3">Mozart</span></div>
             <div hidden={this.state.hidden}>
               <MusicPlayer playlist={playlist} />
             </div>
