@@ -42,7 +42,6 @@ Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-sound
   
   loadFile = function() {
     var file    = document.querySelector('input[type=file]').files[0];
-    console.log(file)
     var reader  = new FileReader();
     if (file) reader.readAsArrayBuffer(file);
     
@@ -52,19 +51,13 @@ Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-sound
       Player = new MidiPlayer.Player(function(event) {
         if (event.name == 'Note on') {
           instrument.play(event.noteName, ac.currentTime, {gain:event.velocity/100});
-          //document.querySelector('#track-' + event.track + ' code').innerHTML = JSON.stringify(event);
         }
         
-        // document.getElementById('tempo-display').innerHTML = Player.tempo;
-        // document.getElementById('file-format-display').innerHTML = Player.format;
-        // document.getElementById('play-bar').style.width = 100 - Player.getSongPercentRemaining() + '%';
       });
       
       Player.loadArrayBuffer(reader.result);
       
       document.getElementById('play-button').removeAttribute('disabled');
-      
-      //buildTracksHtml();
       play();
     }, false);
   }
@@ -73,25 +66,14 @@ Soundfont.instrument(ac, 'https://raw.githubusercontent.com/gleitz/midi-js-sound
     Player = new MidiPlayer.Player(function(event) {
       if (event.name == 'Note on' && event.velocity > 0) {
         instrument.play(event.noteName, ac.currentTime, {gain:event.velocity/100});
-        //document.querySelector('#track-' + event.track + ' code').innerHTML = JSON.stringify(event);
-        //console.log(event);
       }
-      
-      // document.getElementById('tempo-display').innerHTML = Player.tempo;
-      // document.getElementById('file-format-display').innerHTML = Player.format;
-      // document.getElementById('play-bar').style.width = 100 - Player.getSongPercentRemaining() + '%';
     });
     
     Player.loadDataUri(dataUri);
     
     document.getElementById('play-button').removeAttribute('disabled');
-    
-    //buildTracksHtml();
     play();
   }
-  
-  
-  
   // loadDataUri(mario);
 });
 
