@@ -18,9 +18,10 @@ class App extends Component {
         },
       ],
       hidden: true,
-      button: 'beethoven',
-      button1: 'chopin',
-      button2: 'mozart',
+      hidden2: true,
+      button: 'Beethoven',
+      button1: 'Chopin',
+      button2: 'Mozart',
       pic: 'pinoy4',
       title: 'default',
       link: ''
@@ -28,28 +29,31 @@ class App extends Component {
   }
   
   check(abc) {
-    const urlFetch = axios.get('http://192.168.8.103:5000/generate/test');
+    this.setState({hidden2: false, hidden: true});
+    const urlFetch = axios.get(`http://192.168.8.103:5000/generate/${abc}`);
     urlFetch.then((res) => res.data).then(data => this.setState({
-      link: data.link
+      link: data.link,
+      hidden2: true
     })).then(()=> this.download(abc, this.state.link));
   }
+  
   download(data, link){
     console.log(data, link);
-    if(data === 'beethoven'){
+    if(data === 'Beethoven'){
       this.setState({
         pic: 'beethoven',
         title: 'Beethoven',
         hidden: false
       })
     }
-    else if(data === 'chopin'){
+    else if(data === 'Chopin'){
       this.setState({
         pic: 'chopin',
         title: 'Chopin',
         hidden: false
       })
     }
-    else if(data === 'mozart'){
+    else if(data === 'Mozart'){
       this.setState({
         pic: 'mozart',
         title: 'Mozart',
@@ -58,7 +62,7 @@ class App extends Component {
     }
     else{
       this.setState({
-        pic: 'pinoy4'
+        pic: 'default'
       })
     }
   }
@@ -84,10 +88,15 @@ class App extends Component {
             <div onClick={() => this.check(this.state.button)} className="img-circular"><span className="tooltiptext">Beethoven</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div onClick={() => this.check(this.state.button1)} className="img-circular2"><span className="tooltiptext2">Chopin</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div onClick={() => this.check(this.state.button2)} className="img-circular3"><span className="tooltiptext3">Mozart</span></div>
+            <div hidden={this.state.hidden2}>
+              <div >
+                <img className="loader" src={require("./loader.gif")}/>
+                <div className="font">Generating your music</div>
+                </div>
+            </div>
             <div hidden={this.state.hidden}>
               <br/>
               <div className="content" dangerouslySetInnerHTML={{__html: '<iframe frameBorder=\"0\" src=\"./Midi/index.html\" style=\"width:500px; height:300px;\"></iframe>'}}></div>
-  
               <p className="font">Your Music is Ready!</p>
               <a href={this.state.link || 'www.google.com'}>DOWNLOAD</a>
             </div>
