@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import MusicPlayer from 'react-responsive-music-player'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
@@ -22,34 +22,38 @@ class App extends Component {
       button1: 'chopin',
       button2: 'mozart',
       pic: 'pinoy4',
-      title: 'default'
+      title: 'default',
+      link: ''
     };
   }
   
   check(abc) {
-    fetch('https://192.168.43.112:5000/generate/test')
-      .then(response => console.log(response))
-      .then(data => this.setState({ data }));
-    
-    this.setState({
-      hidden: false
-    });
-    if(abc === 'beethoven'){
+    const urlFetch = axios.get('http://192.168.8.103:5000/generate/test');
+    urlFetch.then((res) => res.data).then(data => this.setState({
+      link: data.link
+    })).then(()=> this.download(abc, this.state.link));
+  }
+  download(data, link){
+    console.log(data, link);
+    if(data === 'beethoven'){
       this.setState({
         pic: 'beethoven',
-        title: 'Beethoven'
+        title: 'Beethoven',
+        hidden: false
       })
     }
-    else if(abc === 'chopin'){
+    else if(data === 'chopin'){
       this.setState({
         pic: 'chopin',
-        title: 'Chopin'
+        title: 'Chopin',
+        hidden: false
       })
     }
-    else if(abc === 'mozart'){
+    else if(data === 'mozart'){
       this.setState({
         pic: 'mozart',
-        title: 'Mozart'
+        title: 'Mozart',
+        hidden: false,
       })
     }
     else{
@@ -58,18 +62,15 @@ class App extends Component {
       })
     }
   }
-  
+  componentDidMount () {
+    const script = document.createElement("script");
+    
+    script.src = "www.midijs.net/lib/midi.js";
+    script.async = true;
+    
+    document.body.appendChild(script);
+  }
   render() {
-    const playlist = [
-      {
-        url: require('./through_the_night.mp3'),
-        cover: require(`./${this.state.pic}.jpg`),
-        title: `${this.state.title}`,
-        artist: [
-          'Neural Raphsody',
-        ]
-      }
-    ];
     return (
       <div className="App">
         <header className="App-header">
@@ -84,13 +85,17 @@ class App extends Component {
             <div onClick={() => this.check(this.state.button1)} className="img-circular2"><span className="tooltiptext2">Chopin</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div onClick={() => this.check(this.state.button2)} className="img-circular3"><span className="tooltiptext3">Mozart</span></div>
             <div hidden={this.state.hidden}>
-              <MusicPlayer playlist={playlist} />
+              <br/>
+              <div className="content" dangerouslySetInnerHTML={{__html: '<iframe frameBorder=\"0\" src=\"./Midi/index.html\" style=\"width:500px; height:300px;\"></iframe>'}}></div>
+  
+              <p className="font">Your Music is Ready!</p>
+              <a href={this.state.link || 'www.google.com'}>DOWNLOAD</a>
             </div>
+            
           </div>
         </header>
       </div>
     );
   }
 }
-
 export default App;

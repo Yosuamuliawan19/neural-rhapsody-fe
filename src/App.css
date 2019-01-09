@@ -188,7 +188,7 @@
 h1 {
   display: inline;
   position: relative;
-  font: 200px Helvetica, Sans-Serif;
+  font: 50px Helvetica, Sans-Serif;
   letter-spacing: -5px;
   color: rgba(0,0,255,0.5);
 
@@ -210,6 +210,13 @@ h1:after {
   animation:
           typing 3.5s steps(30, end),
           blinking-cursor .5s step-end infinite;
+}
+
+.font {
+  color: #5166ff
+}
+.font2 {
+  color: #5166ff
 }
 
 /* The typing effect */
