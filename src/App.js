@@ -30,7 +30,7 @@ class App extends Component {
   
   check(abc) {
     this.setState({hidden2: false, hidden: true});
-    const urlFetch = axios.get(`http://192.168.8.103:5000/generate/${abc}`);
+    const urlFetch = axios.get(`http://172.20.10.4:5000/generate/${abc}`);
     urlFetch.then((res) => res.data).then(data => this.setState({
       link: data.link,
       hidden2: true
